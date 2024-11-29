@@ -157,6 +157,15 @@ const mainStyles = {
     color: "white",
     textTransform: "none",
   },
+  noDataContainer: {
+    textAlign: "center",
+    padding: "20px",
+    width: "100%",
+  },
+  noDataText: {
+    fontSize: "14px",
+    color: "#040404",
+  },
 };
 
 export { mainStyles };

@@ -35,8 +35,8 @@ export const tableRows = [
   },
   {
     id: 3,
-    clientName: "Georgi",
-    clinicianName: "Georgi",
+    clientName: "Ann",
+    clinicianName: "Joseph",
     clientType: "Individual",
     treatmentPlan: "Missing",
     lastSession: "Oct 31, 2023",
@@ -44,8 +44,8 @@ export const tableRows = [
   },
   {
     id: 4,
-    clientName: "John",
-    clinicianName: "Anna",
+    clientName: "Wick",
+    clinicianName: "Kai",
     clientType: "Couple",
     treatmentPlan: "Missing",
     lastSession: "Nov 5, 2023",
@@ -53,8 +53,8 @@ export const tableRows = [
   },
   {
     id: 5,
-    clientName: "Georgi",
-    clinicianName: "Georgi",
+    clientName: "Miguel",
+    clinicianName: "Jorge",
     clientType: "Family",
     treatmentPlan: "Saved",
     lastSession: "Oct 31, 2023",

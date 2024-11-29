@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import { Box, Button, Divider, FormControl, TextField } from "@mui/material";
 import { mainStyles } from "../../styles/mainStyles";
 import AddClientModal from "./addClientModal";
 import { useState } from "react";
 
-const ClientFilters = () => {
+const ClientFilters = ({ setFilteredRows, originalRows }) => {
   const {
     filtersMainContainer,
     formControl,
@@ -16,12 +17,48 @@ const ClientFilters = () => {
   const [open, setOpen] = useState(false);
   const toggleModal = () => setOpen((prev) => !prev);
 
+  const [clientName, setClientName] = useState("");
+  const [clinicianName, setClinicianName] = useState("");
+
+  const handleClientChange = (event) => {
+    setClientName(event.target.value);
+    filterRows(event.target.value, clinicianName);
+  };
+
+  const handleClinicianChange = (event) => {
+    setClinicianName(event.target.value);
+    filterRows(clientName, event.target.value);
+  };
+
+  const filterRows = (client, clinician) => {
+    let filtered = originalRows;
+
+    if (client) {
+      filtered = filtered.filter((row) =>
+        row.clientName.toLowerCase().includes(client.toLowerCase())
+      );
+    }
+
+    if (clinician) {
+      filtered = filtered.filter((row) =>
+        row.clinicianName.toLowerCase().includes(clinician.toLowerCase())
+      );
+    }
+
+    if (!client && !clinician) {
+      filtered = originalRows;
+    }
+
+    setFilteredRows(filtered);
+  };
+
   return (
     <Box sx={filtersMainContainer}>
       <FormControl sx={formControl}>
         <label style={selectLabel}>Client name</label>
         <TextField
-          defaultValue=""
+          value={clientName}
+          onChange={handleClientChange}
           variant="outlined"
           placeholder="Select client"
           sx={{
@@ -48,7 +85,8 @@ const ClientFilters = () => {
       <FormControl sx={formControl}>
         <label style={selectLabel}>Clinician name</label>
         <TextField
-          defaultValue=""
+          value={clinicianName}
+          onChange={handleClinicianChange}
           variant="outlined"
           placeholder="Select clinician"
           sx={{
@@ -109,6 +147,11 @@ const ClientFilters = () => {
       {open && <AddClientModal open={open} toggleModal={toggleModal} />}
     </Box>
   );
+};
+
+ClientFilters.propTypes = {
+  originalRows: PropTypes.array,
+  setFilteredRows: PropTypes.func,
 };
 
 export default ClientFilters;
