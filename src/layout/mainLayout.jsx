@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Box, styled } from "@mui/material";
 import { layoutStyles } from "../styles/layoutStyles";
+import MainNavBar from "../components/MainNavBar";
 
 const MainLayoutRoot = styled("div")(() => ({
   backgroundColor: "#ffffff",
@@ -12,6 +13,7 @@ const MainLayout = ({ children }) => {
   return (
     <MainLayoutRoot>
       <Box sx={rootLayoutContainer}>
+        <MainNavBar />
         <Box sx={subLayoutContainer}>{children}</Box>
       </Box>
     </MainLayoutRoot>
