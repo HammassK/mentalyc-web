@@ -9,10 +9,10 @@ const layoutStyles = {
     minHeight: "100vh",
   },
   subLayoutContainer: {
-    alignItems: "center",
-    justifyContent: "center",
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "flex-start",
     width: "100vw",
     flex: 1,
     backgroundColor: "#f0f0f0",
