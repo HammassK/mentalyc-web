@@ -4,7 +4,7 @@ import { Tab, Tabs, styled } from "@mui/material";
 const CustomTabs = styled(Tabs)({
   backgroundColor: "#ffffff",
   borderRadius: "24px",
-  height: "20px",
+  maxHeight: "20px",
   "& .MuiTabs-indicator": {
     display: "none",
   },
@@ -14,7 +14,7 @@ const CustomTabs = styled(Tabs)({
 const CustomTab = styled(Tab)({
   textTransform: "none",
   borderRadius: "24px",
-  height: "20px",
+  maxHeight: "20px",
   fontWeight: "400",
   fontSize: "14px",
   "&.Mui-selected": {

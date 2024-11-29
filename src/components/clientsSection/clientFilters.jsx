@@ -1,5 +1,7 @@
 import { Box, Button, Divider, FormControl, TextField } from "@mui/material";
 import { mainStyles } from "../../styles/mainStyles";
+import AddClientModal from "./addClientModal";
+import { useState } from "react";
 
 const ClientFilters = () => {
   const {
@@ -10,6 +12,10 @@ const ClientFilters = () => {
     divider,
     addClientButton,
   } = mainStyles;
+
+  const [open, setOpen] = useState(false);
+  const toggleModal = () => setOpen((prev) => !prev);
+
   return (
     <Box sx={filtersMainContainer}>
       <FormControl sx={formControl}>
@@ -22,7 +28,6 @@ const ClientFilters = () => {
             ...textField,
             "& .MuiOutlinedInput-root": {
               borderRadius: "8px",
-
               "& fieldset": {
                 borderColor: "white",
               },
@@ -50,7 +55,6 @@ const ClientFilters = () => {
             ...textField,
             "& .MuiOutlinedInput-root": {
               borderRadius: "8px",
-
               "& fieldset": {
                 borderColor: "white",
               },
@@ -68,18 +72,41 @@ const ClientFilters = () => {
           size="small"
         />
       </FormControl>
-      <Divider orientation="horizontal" sx={divider} color="#e0e0e0" />
+
+      <Divider
+        orientation="horizontal"
+        sx={{
+          ...divider,
+          display: {
+            xs: "none",
+            sm: "none",
+            md: "none",
+            lg: "flex",
+            xl: "flex",
+          },
+        }}
+        color="#e0e0e0"
+      />
+
       <Button
         variant="outlined"
         sx={{
           ...addClientButton,
           ":hover": {
             backgroundColor: "transparent",
+            borderColor: "#731054",
+          },
+          ":focus": {
+            outline: "none",
+            boxShadow: "none",
           },
         }}
+        onClick={toggleModal}
       >
         + Add new client
       </Button>
+
+      {open && <AddClientModal open={open} toggleModal={toggleModal} />}
     </Box>
   );
 };

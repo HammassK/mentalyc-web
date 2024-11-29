@@ -47,7 +47,7 @@ const navbarStyles = {
   navLinksContainer: {
     display: "flex",
     alignItems: "center",
-    gap: "44px",
+    gap: "40px",
     height: "100%",
   },
   navLinkText: {

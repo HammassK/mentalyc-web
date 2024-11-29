@@ -96,6 +96,67 @@ const mainStyles = {
     color: "#000",
     fontSize: "12px",
   },
+  modalSubContainer: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: "528px",
+    maxHeight: "90vh",
+    overflowX: "hidden",
+    overflowY: "auto",
+    bgcolor: "background.paper",
+    borderRadius: "10px",
+    boxShadow: 24,
+    padding: "2%",
+  },
+  modalCloseIcon: {
+    position: "absolute",
+    right: "25px",
+    top: "20px",
+    cursor: "pointer",
+  },
+  mandatoryField: {
+    color: "red",
+  },
+  modalHeader: {
+    fontSize: "20px",
+    fontWeight: "700",
+    marginBottom: "16px",
+    color: "#333",
+    width: "100%",
+    textAlign: "center",
+  },
+  modalSection: {
+    marginBottom: "12px",
+    width: "100%",
+    textAlign: "center",
+    color: "#707070",
+    fontSize: "14px",
+    fontWeight: "400",
+  },
+  radioButton: {
+    color: "#731054",
+  },
+  switchContainer: {
+    display: "flex",
+    alignItems: "center",
+    width: "100%",
+    justifyContent: "space-between",
+    marginBottom: "16px",
+  },
+  buttonContainer: {
+    width: "100%",
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  buttonStyle: {
+    marginTop: "16px",
+    minWidth: "110px",
+    backgroundColor: "#731054",
+    color: "white",
+    textTransform: "none",
+  },
 };
 
 export { mainStyles };
