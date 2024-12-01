@@ -81,7 +81,7 @@ const ClientFilters = ({ setFilteredRows, originalRows }) => {
         }}
         color="#e0e0e0"
       />
-      <AddClientButton />
+      <AddClientButton toggleModal={toggleModal} />
       {open && <AddClientModal open={open} toggleModal={toggleModal} />}
     </Box>
   );
