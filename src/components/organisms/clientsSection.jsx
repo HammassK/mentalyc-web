@@ -44,7 +44,7 @@ const ClientsSection = () => {
           </Typography>
         </Box>
       ) : (
-        <DataTable rows={filteredRows} />
+        <DataTable rows={filteredRows} tabValue={tabValue} />
       )}
     </Box>
   );

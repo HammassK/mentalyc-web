@@ -11,7 +11,7 @@ import {
 import { tableColumns, tableRows } from "../../utils/constants";
 import { mainStyles } from "../../styles/mainStyles";
 
-const DataTable = ({ rows }) => {
+const DataTable = ({ rows, tabValue }) => {
   const { tableContainer, tableHeader, tableRow, clientType } = mainStyles;
   const getClientTypeColor = (type) => {
     switch (type) {
@@ -32,12 +32,17 @@ const DataTable = ({ rows }) => {
 
   const data = rows?.length > 0 ? rows : tableRows;
 
+  const columns =
+    tabValue === 0
+      ? tableColumns
+      : tableColumns.filter((column) => column.field !== "treatmentPlan");
+
   return (
     <TableContainer sx={tableContainer}>
       <Table sx={{ minWidth: 650 }} aria-label="client table">
         <TableHead>
           <TableRow sx={{ backgroundColor: "#fff" }}>
-            {tableColumns.map((column) => (
+            {columns.map((column) => (
               <TableCell key={column.field} sx={tableHeader}>
                 {column.headerName}
               </TableCell>
@@ -59,7 +64,10 @@ const DataTable = ({ rows }) => {
                   {row.clientType}
                 </Typography>
               </TableCell>
-              <TableCell sx={tableRow}>{row.treatmentPlan}</TableCell>
+              {tabValue === 0 && (
+                <TableCell sx={tableRow}>{row.treatmentPlan}</TableCell>
+              )}
+
               <TableCell sx={tableRow}>{row.lastSession}</TableCell>
               <TableCell sx={tableRow}>{row.unsavedNotes}</TableCell>
             </TableRow>
@@ -72,6 +80,7 @@ const DataTable = ({ rows }) => {
 
 DataTable.propTypes = {
   rows: PropTypes.array,
+  tabValue: PropTypes.number,
 };
 
 export default DataTable;
