@@ -28,3 +28,11 @@ Then, run the development server:
 To view the storybook documentation:
 
 - yarn storybook
+
+
+
+SUGGESTIONS & IMPROVMENTS 
+
+- Instead of using a no data text placeholder, a svg or icon can be used for better UI
+- Table design can be improved with header styling and overall table container style
+- If the table filters are input fields then there shouldn't be an dropdown icon at the end of the field.
