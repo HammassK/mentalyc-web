@@ -7,7 +7,6 @@ import {
   RadioGroup,
   FormControlLabel,
   Radio,
-  Switch,
   Button,
   MenuItem,
   Select,
@@ -16,6 +15,8 @@ import {
 import { useState } from "react";
 import { mainStyles } from "../../styles/mainStyles";
 import CrossIcon from "../../assets/svgs/crossIcon";
+import Switch from "../atoms/switch";
+import TypeRadioGroup from "./typeRadioGroup";
 
 const AddClientModal = ({ open, toggleModal }) => {
   const {
@@ -26,7 +27,6 @@ const AddClientModal = ({ open, toggleModal }) => {
     modalHeader,
     modalSection,
     radioButton,
-    switchContainer,
     buttonContainer,
     buttonStyle,
   } = mainStyles;
@@ -35,7 +35,6 @@ const AddClientModal = ({ open, toggleModal }) => {
   const [diagnosis, setDiagnosis] = useState(
     "F43.22 - Adjustment disorder with anxiety"
   );
-  const [isHighRisk, setIsHighRisk] = useState(false);
 
   return (
     <Modal
@@ -55,67 +54,11 @@ const AddClientModal = ({ open, toggleModal }) => {
           This client information is essential for generating detailed clients
           documents
         </Typography>
-        <label style={selectLabel}>
-          Client type <span style={mandatoryField}>*</span>
-        </label>
-        <RadioGroup
-          row
-          value={clientType}
-          onChange={(e) => setClientType(e.target.value)}
-          sx={modalSection}
-        >
-          <FormControlLabel
-            value="Individual"
-            control={
-              <Radio
-                sx={{
-                  ...radioButton,
-                  "&.Mui-checked": {
-                    color: "#731054",
-                  },
-                }}
-              />
-            }
-            label="Individual"
-            slotProps={{
-              typography: {
-                sx: {
-                  fontSize: "12px",
-                  backgroundColor: "#EFEAFD",
-                  borderRadius: "4px",
-                  padding: "4px",
-                  color: "#040404",
-                },
-              },
-            }}
-          />
-
-          <FormControlLabel
-            value="Couple"
-            control={
-              <Radio
-                sx={{
-                  ...radioButton,
-                  "&.Mui-checked": {
-                    color: "#731054",
-                  },
-                }}
-              />
-            }
-            label="Couple"
-            slotProps={{
-              typography: {
-                sx: {
-                  fontSize: "12px",
-                  backgroundColor: "#E2F3FC",
-                  borderRadius: "4px",
-                  padding: "4px",
-                  color: "#040404",
-                },
-              },
-            }}
-          />
-        </RadioGroup>
+        <TypeRadioGroup
+          label={"Client type"}
+          clientType={clientType}
+          setClientType={setClientType}
+        />
         {clientType === "Couple" ? (
           <>
             {" "}
@@ -351,13 +294,7 @@ const AddClientModal = ({ open, toggleModal }) => {
           </Select>
         </FormControl>
 
-        <Box sx={switchContainer}>
-          <Typography sx={{ fontSize: "14px" }}>High risk client</Typography>
-          <Switch
-            checked={isHighRisk}
-            onChange={(e) => setIsHighRisk(e.target.checked)}
-          />
-        </Box>
+        <Switch label={"High risk client"} />
 
         <FormControl fullWidth>
           <label style={selectLabel}>Extra notes</label>

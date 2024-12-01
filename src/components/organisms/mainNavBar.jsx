@@ -6,16 +6,16 @@ import {
   MenuItem,
   Typography,
 } from "@mui/material";
-import { navbarStyles } from "../styles/layoutStyles";
-import AppLogo from "../assets/svgs/navbar/appLogo";
-import ProIcon from "../assets/svgs/navbar/proIcon";
-import { NavLinks } from "../utils/constants";
-import EarnIcon from "../assets/svgs/navbar/earnIcon";
-import SuperButton from "../assets/svgs/navbar/superButton";
+import { navbarStyles } from "../../styles/layoutStyles";
+import AppLogo from "../../assets/svgs/navbar/appLogo";
+import ProIcon from "../../assets/svgs/navbar/proIcon";
+import { NavLinks } from "../../utils/constants";
+import EarnIcon from "../../assets/svgs/navbar/earnIcon";
+import SuperButton from "../../assets/svgs/navbar/superButton";
 import { useState } from "react";
-import ArrowDown from "../assets/svgs/navbar/arrowDown";
-import NotesIcon from "../assets/svgs/navbar/notesIcon";
-import InfoIcon from "../assets/svgs/navbar/infoIcon";
+import ArrowDown from "../../assets/svgs/navbar/arrowDown";
+import NotesIcon from "../../assets/svgs/navbar/notesIcon";
+import InfoIcon from "../../assets/svgs/navbar/infoIcon";
 
 const MainNavBar = () => {
   const {
@@ -94,30 +94,13 @@ const MainNavBar = () => {
             </Avatar>
             <ArrowDown />
           </IconButton>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleMenuClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "right",
-            }}
-            transformOrigin={{
-              vertical: "top",
-              horizontal: "right",
-            }}
-          >
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
-          </Menu>
         </Box>
       </Box>
 
       {/* For smaller screens, display only appLogo and notesContainer */}
       <Box
         sx={{
-          display: { xs: "flex", lg: "none" }, // Show on small screens
+          display: { xs: "flex", lg: "none" },
           justifyContent: "space-between",
           alignItems: "center",
           width: "85%",
@@ -158,6 +141,7 @@ const MainNavBar = () => {
               vertical: "top",
               horizontal: "right",
             }}
+            sx={{ display: { xs: "flex", lg: "none" } }}
           >
             {NavLinks.map((item, index) => (
               <MenuItem key={index} onClick={handleMenuClose}>
@@ -165,9 +149,6 @@ const MainNavBar = () => {
               </MenuItem>
             ))}
             <MenuItem onClick={handleMenuClose}>Earn</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
-            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
           </Menu>
         </Box>
       </Box>
