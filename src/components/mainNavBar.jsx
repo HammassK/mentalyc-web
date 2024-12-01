@@ -40,9 +40,15 @@ const MainNavBar = () => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <Box sx={navbarContainer}>
-      <Box sx={navbarSubContainer}>
+      <Box
+        sx={{
+          ...navbarSubContainer,
+          display: { xs: "none", lg: "flex" }, // Hide on small screens
+        }}
+      >
         <Box sx={appLogoContainer}>
           <AppLogo />
           <ProIcon />
@@ -64,7 +70,6 @@ const MainNavBar = () => {
               {item?.name}
             </Typography>
           ))}
-
           <EarnIcon />
         </Box>
         <Box sx={notesContainer}>
@@ -102,6 +107,64 @@ const MainNavBar = () => {
               horizontal: "right",
             }}
           >
+            <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
+            <MenuItem onClick={handleMenuClose}>Logout</MenuItem>
+          </Menu>
+        </Box>
+      </Box>
+
+      {/* For smaller screens, display only appLogo and notesContainer */}
+      <Box
+        sx={{
+          display: { xs: "flex", lg: "none" }, // Show on small screens
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "85%",
+          padding: "0 16px",
+        }}
+      >
+        <Box sx={appLogoContainer}>
+          <AppLogo />
+        </Box>
+        <Box sx={notesContainer}>
+          <SuperButton />
+          <IconButton
+            onClick={handleAvatarClick}
+            sx={{
+              "&:focus": {
+                outline: "none",
+                boxShadow: "none",
+              },
+              "&:hover": {
+                backgroundColor: "transparent",
+              },
+            }}
+          >
+            <Avatar sx={navAvatar}>
+              <Typography sx={avatarText}>M</Typography>
+            </Avatar>
+            <ArrowDown />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleMenuClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "right",
+            }}
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "right",
+            }}
+          >
+            {NavLinks.map((item, index) => (
+              <MenuItem key={index} onClick={handleMenuClose}>
+                {item?.name}
+              </MenuItem>
+            ))}
+            <MenuItem onClick={handleMenuClose}>Earn</MenuItem>
             <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
             <MenuItem onClick={handleMenuClose}>Settings</MenuItem>
             <MenuItem onClick={handleMenuClose}>Logout</MenuItem>

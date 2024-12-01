@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import {
   Table,
   TableBody,
@@ -10,7 +11,7 @@ import {
 import { tableColumns, tableRows } from "../../utils/constants";
 import { mainStyles } from "../../styles/mainStyles";
 
-const DataTable = () => {
+const DataTable = ({ rows }) => {
   const { tableContainer, tableHeader, tableRow, clientType } = mainStyles;
   const getClientTypeColor = (type) => {
     switch (type) {
@@ -29,6 +30,8 @@ const DataTable = () => {
     }
   };
 
+  const data = rows?.length > 0 ? rows : tableRows;
+
   return (
     <TableContainer sx={tableContainer}>
       <Table sx={{ minWidth: 650 }} aria-label="client table">
@@ -42,7 +45,7 @@ const DataTable = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {tableRows.map((row) => (
+          {data.map((row) => (
             <TableRow key={row.id}>
               <TableCell sx={tableRow}>{row.clientName}</TableCell>
               <TableCell sx={tableRow}>{row.clinicianName}</TableCell>
@@ -65,6 +68,10 @@ const DataTable = () => {
       </Table>
     </TableContainer>
   );
+};
+
+DataTable.propTypes = {
+  rows: PropTypes.array,
 };
 
 export default DataTable;
