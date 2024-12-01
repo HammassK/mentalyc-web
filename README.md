@@ -6,3 +6,25 @@ Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Getting Started
+
+Clone the project from github:
+
+- git clone git@github.com:HammassK/mentalyc-web.git
+
+Then navigate to project directory:
+
+- cd mentalyc-web
+
+Install dependencies:
+
+- yarn
+
+Then, run the development server:
+
+- yarn dev
+
+To view the storybook documentation:
+
+- yarn storybook

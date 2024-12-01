@@ -1,8 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import ClientTabs from "./clientTabs";
-import ClientFilters from "./clientFilters";
-import DataTable from "./dataTable";
+import ClientTabs from "../molecules/clientTabs";
+import ClientFilters from "../molecules/clientFilters";
+import DataTable from "../molecules/dataTable";
 import { mainStyles } from "../../styles/mainStyles";
 import { tableRows } from "../../utils/constants";
 

@@ -43,7 +43,7 @@ const mainStyles = {
     gap: "10px",
   },
   formControl: {
-    width: "300px",
+    width: { xs: "100%", md: "300px" },
   },
   selectLabel: {
     width: "280px",
@@ -69,7 +69,8 @@ const mainStyles = {
     textTransform: "none",
     borderColor: "#731054",
     color: "#731054",
-    minWidth: "190px",
+    minWidth: "170px",
+    width: "190px",
     height: "40px",
     fontSize: "16px",
     marginTop: "24px",
